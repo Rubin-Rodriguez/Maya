@@ -8,13 +8,10 @@ import numpy as np
 from scipy.signal import *
 from numpy.fft import *
 from scipy import *
-#import pywt
 import mne
 import random
 import pandas as pd
-
 import random
-
 from pylab import *
 
 app = Flask(__name__)
