@@ -7,6 +7,7 @@ def maya_mantra():
     # import librosa.display
     from tqdm import tqdm
     from tkinter import filedialog
+
     import random
     # import pandas as pd
     import os
@@ -14,22 +15,16 @@ def maya_mantra():
     # import sys
     import warnings
     import time
-
+    import ffmpeg
 
     warnings.filterwarnings("ignore")  # warnings are ignored
+
     SR = 100
     DURATION = 20
     try:
-        filename = filedialog.askopenfilename(initialdir="/", title="Select a file",
-                                              filetypes=(("Text files", "*.*"), ("all files", "*.*")))
+        filename = filedialog.askopenfilename(initialdir="/", title="Select a audio file", filetypes=(("wav files", "*.wav"), ("mp3 files", "*.mp3")))
     except RuntimeError:
         print("RUN TIME ERROR!")
-
-        return "", ""
-    if filename[-3:] != "wav":
-        print(
-            "WARNING!\nFile extension Missmatch!(" + filename + ")\n Files with other than .wav extension cannot be processed!\n")
-
         return "", ""
 
     y, sr = librosa.load(filename, duration=DURATION, sr=SR, mono=True)

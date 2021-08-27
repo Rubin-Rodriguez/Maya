@@ -27,7 +27,7 @@ def homepage():
 
 @app.route('/homepage')
 def resulthome():
-    if session['logged_in'] == True:
+    if session['logged_in']:
         return render_template('home.html')
     else:
         return render_template('login.html')
@@ -68,7 +68,7 @@ def logindetails():
 
 @app.route('/predictinfo')
 def predictin():
-    if session['logged_in'] == True:
+    if session['logged_in']:
         return render_template('info.html')
     else:
         return render_template('login.html')
@@ -76,6 +76,7 @@ def predictin():
 @app.route('/predict',methods = ['POST', 'GET'])
 def predcrop():
     if request.method == 'POST':
+
         import maya_ultimate.Mayamantra as mantra
 
         response, accuracy = mantra.maya_mantra()
@@ -87,7 +88,7 @@ def predcrop():
 @app.route("/assist")
 def assist():
 
-    if session['logged_in'] == True:
+    if session['logged_in']:
         import maya_ultimate.Maya as maya
         message = maya.maya_assist()
         flash("Maya Assistant Terminated")
@@ -98,7 +99,7 @@ def assist():
 @app.route("/music")
 def music():
 
-    if session['logged_in'] == True:
+    if session['logged_in']:
         import maya_ultimate.Kukushka as kuku
         kuku.play()
         return render_template('home.html')
