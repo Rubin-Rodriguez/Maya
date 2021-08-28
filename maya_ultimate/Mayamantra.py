@@ -1,13 +1,11 @@
 #SCALE IDENTIFIER MAYA MANTRA
 
 def maya_mantra():
-    # print("\n\nINITIALIZING FEATURE EXTRACTION...\n\n")
     import numpy as np
     import librosa
     # import librosa.display
     from tqdm import tqdm
     from tkinter import filedialog
-
     import random
     # import pandas as pd
     import os

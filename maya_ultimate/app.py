@@ -85,6 +85,27 @@ def predcrop():
             return render_template('info.html')
         else:
             return render_template('resultpred.html', prediction=response, prediction1=accuracy)
+
+@app.route('/predictchord')
+def predictchord():
+    if session['logged_in']:
+        return render_template('info2.html')
+    else:
+        return render_template('login.html')
+
+@app.route('/chords_predict',methods = ['POST', 'GET'])
+def predchord():
+    if request.method == 'POST':
+
+        import maya_ultimate.Stringsmelody as strmel
+
+        response, accuracy = strmel.strings_melody()
+        if response == "":
+            return render_template('info.html')
+        else:
+            return render_template('resultpred.html', prediction=response, prediction1=accuracy)
+
+
 @app.route("/assist")
 def assist():
 

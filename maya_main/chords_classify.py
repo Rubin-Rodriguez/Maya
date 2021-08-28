@@ -21,8 +21,8 @@ file_count = 0
 try:
     if os.path.exists("chords_time_series_dataset.csv"):
         os.remove("chords_time_series_dataset.csv")
-    if os.path.exists("chords_dataset_feature.csv"):
-        os.remove("chords_dataset_feature.csv")
+    if os.path.exists("..\\maya_ultimate\\maya_dataset\\chords_dataset_feature.csv"):
+        os.remove("..\\maya_ultimate\\maya_dataset\\chords_dataset_feature.csv")
     for folder in tqdm(os.listdir("Maya_Dataset2/"), ncols=100, desc="Exracting Features"):
 
         if folder == ".DS_Store":
@@ -60,7 +60,7 @@ try:
                 to_append += f' {np.mean(e)}'
             to_append += f' {g}'
 
-            file = open('chords_dataset_feature.csv', 'a', newline='')
+            file = open('..\\maya_ultimate\\maya_dataset\\chords_dataset_feature.csv', 'a', newline='')
 
             with file:
                 writer2 = csv.writer(file)
