@@ -1,26 +1,52 @@
-#SCALE IDENTIFIER MAYA MANTRA
+# SCALE IDENTIFIER MAYA MANTRA
 
 def strings_melody():
     import numpy as np
     import librosa
-    # import librosa.display
-    from tqdm import tqdm
     from tkinter import filedialog
     import random
-    # import pandas as pd
     import os
     import csv
-    # import sys
     import warnings
-    import time
-    import ffmpeg
+    import sounddevice as sd
+    from scipy.io.wavfile import write
+    import wavio as wv
+    from playsound2 import playsound
 
     warnings.filterwarnings("ignore")  # warnings are ignored
 
     SR = 100
     DURATION = 4
+
+    # Root Directory for audio clips and drafts
+    directory_path = 'D:/Project Maya/Maya/maya_main/'
+
+    # Sampling frequency
+    freq = 44100
+
+    # Recording duration
+    duration = 4
+
     try:
-        filename = filedialog.askopenfilename(initialdir="/", title="Select a audio file", filetypes=(("wav files", "*.wav"), ("mp3 files", "*.mp3")))
+        playsound(directory_path + 'maya_recordings/listen.wav')
+        print("Listening!!!")
+
+        # Start recorder with the given values
+        # of duration and sample frequency
+        recording = sd.rec(int(duration * freq),samplerate=freq, channels=2)
+
+        # Record audio for the given number of seconds
+        sd.wait()
+
+        # This will convert the NumPy array to an audio
+        # file with the given sampling frequency
+        write(directory_path + "recordings/recording0.wav", freq, recording)
+
+        # Convert the NumPy array to audio file
+        wv.write(directory_path + "recordings/recording1.wav", recording, freq, sampwidth=2)
+        filename = directory_path + "recordings/recording1.wav"
+
+        # filename = filedialog.askopenfilename(initialdir="/", title="Select a audio file", filetypes=(("wav files", "*.wav"), ("mp3 files", "*.mp3")))
     except RuntimeError:
         print("RUN TIME ERROR!")
         return "", ""
@@ -34,7 +60,7 @@ def strings_melody():
     with file_time_series:
         writer = csv.writer(file_time_series)
         writer.writerow(arr)
-    #g = folder
+    # g = folder
 
     chroma_stft = librosa.feature.chroma_stft(y=y, sr=sr)
     rmse = librosa.feature.rms(y=y)
@@ -46,7 +72,7 @@ def strings_melody():
     to_append = f'{np.mean(chroma_stft)} {np.mean(rmse)} {np.mean(spec_cent)} {np.mean(spec_bw)} {np.mean(rolloff)} {np.mean(zcr)}'
     for e in mfcc:
         to_append += f' {np.mean(e)}'
-    #to_append += f' {g}'
+    # to_append += f' {g}'
 
     file = open('chord_test_dataset.csv', 'w', newline='')
     with file:
