@@ -154,6 +154,21 @@ cursor: pointer;
     text-align:center;
     min-height:100vh;
 }
+.bottom center{
+  padding: 5px;
+  font-size: 0.9375rem;
+  background: #151515;
+}
+.bottom center span{
+  color: #656565;
+}
+.bottom center a{
+  color: #f12020;
+  text-decoration: none;
+}
+.bottom center a:hover{
+  text-decoration: underline;
+}
 
 </style>
 
@@ -162,11 +177,11 @@ cursor: pointer;
 
     <div class="topnav">
 
-        <a href="/home" class="active">Home</a>
+        <a href="/homepage" class="active">Home</a>
         <a href="/logout" style="float: right;">Logout</a>
        <a href="/assist" style="float: right;"><img src="https://th.bing.com/th/id/R.907dff0e174c3e7c51b8680f4cdf077c?rik=vAA8GzUU5OLuKg&riu=http%3a%2f%2ficons.iconarchive.com%2ficons%2fdesignbolts%2ffree-multimedia%2f1024%2fStudio-Mic-icon.png&ehk=wkcJ5UlycFUxKrZgaVsTsCy8zQzIrsIhEXiPM880OUw%3d&risl=&pid=ImgRaw&r=0" height="25" width="25" alt="Maya"> </a>
         <a href="/help">Help</a>
-        <a href="/about">About</a>
+        <a href="/about">About Us</a>
         <p style="float:right;font-family:URW Chancery L, cursive;text-align:center;padding:10px 16px;">{{response}}</p>
 
     </div>
@@ -188,6 +203,11 @@ cursor: pointer;
      </button></a>
 </div>
 
-
+<div class="bottom">
+        <center>
+          <span class="credit">Created By <a href="https://ruintel.business.site">RuIntel Corp.</a> | </span>
+          <span class="far fa-copyright"></span><span> 2021 All rights reserved.</span>
+        </center>
+      </div>
     </body>
 </html>

@@ -12,7 +12,6 @@ root = Tk()
 root.title('Kukushka Ver 1.0')
 root.iconbitmap('D:/Project Maya/Maya/maya_ultimate/icons/kuku.ico')
 root.geometry("400x350")
-
 #initialize Pygame Mixer
 pygame.mixer.init()
 
@@ -39,7 +38,7 @@ def play_time():
 
     #update time
     status_bar.after(1000, play_time)
-
+    root.mainloop()
 #add song function
 def add_song():
     song = filedialog.askopenfilename(initialdir='D:/Project Maya/Maya/maya_main/maya_music/', title="Choose A Song", filetypes=(("mp3 Files","*.mp3"),))
@@ -163,7 +162,6 @@ def delete_all_songs():
     song_box.delete(0, END)
     pygame.mixer.music.stop()
 
-
 #create playlist box
 song_box = Listbox(root, bg="black", fg="green", width=60, selectbackground="gray", selectforeground="white")
 song_box.pack(pady=20)
@@ -219,4 +217,4 @@ for song in tqdm(songs, ncols=100, desc="Loading Songs"):
     # insert into playlist
     song_box.insert(END, song)
 
-root.mainloop()
+

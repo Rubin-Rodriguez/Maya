@@ -23,6 +23,7 @@ def maya_assist():
     try:
 
         with my_mic as source:
+            pygame.mixer.music.set_volume(0.1)
             playsound(directory_path+'maya_recordings/listen.wav')
             print("Listening!!!")
             audio = r.listen(source)  # take voice input from the microphone
@@ -92,7 +93,7 @@ def maya_assist():
             basedir = directory_path+"maya_music"
             # import maya_ultimate.Kukushka as kuku
             # kuku.play()
-
+            pygame.mixer.music.set_volume(1.0)
             # Music playback starts
             try:
                 # selecting random file from maya_music dir
@@ -132,6 +133,7 @@ def maya_assist():
     except s_r.RequestError:
         print("\n\n\nNETWORK CONNECTION UNAVALILABLE!\n\n")
         playsound(directory_path+'maya_recordings/networkerror.wav')
+    pygame.mixer.music.set_volume(1.0)
     return("Maya Assistant Closed")
 
 #END OF MAYA VOICE ASSISTANT!

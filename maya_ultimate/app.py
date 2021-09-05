@@ -66,6 +66,21 @@ def logindetails():
             flash("Invalid user credentials")
             return render_template('login.html')
 
+@app.route('/about')
+def about():
+    if session['logged_in']:
+        return render_template('aboutus.html')
+    else:
+        return render_template('login.html')
+
+@app.route('/help')
+def help():
+    if session['logged_in']:
+        return render_template('help.html')
+    else:
+        return render_template('login.html')
+
+
 @app.route('/predictinfo')
 def predictin():
     if session['logged_in']:
