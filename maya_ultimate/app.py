@@ -64,7 +64,8 @@ def logindetails():
             return render_template('home.html')
         else:
             flash("Invalid user credentials")
-            return render_template('login.html')
+            login_message = "User name or password is incorrect!"
+            return render_template('login.html', response=login_message)
 
 @app.route('/about')
 def about():
