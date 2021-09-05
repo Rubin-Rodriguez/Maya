@@ -24,8 +24,11 @@ def maya_mantra():
     except RuntimeError:
         print("RUN TIME ERROR!")
         return "", ""
-
-    y, sr = librosa.load(filename, duration=DURATION, sr=SR, mono=True)
+    try:
+        y, sr = librosa.load(filename, duration=DURATION, sr=SR, mono=True)
+    except FileNotFoundError:
+        print("Please select a audio file!!!")
+        return "", ""
     arr = list(y)
     arr.insert(0, filename)
 

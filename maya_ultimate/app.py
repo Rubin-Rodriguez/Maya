@@ -138,7 +138,10 @@ def music():
 
     if session['logged_in']:
         import maya_ultimate.Kukushka as kuku
-        kuku.play()
+        try:
+            kuku.play()
+        except RuntimeError:
+            print("Runtime Error!!")
         return render_template('home.html')
     else:
         return render_template('login.html')
