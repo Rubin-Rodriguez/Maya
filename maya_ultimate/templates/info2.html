@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Maya</title>
+    <title>Upload File</title>
   <!--  <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/style1.css')}}">-->
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -34,9 +34,10 @@
 }
 
 body {font-family: Arial, Helvetica, sans-serif;
-background-image:url(https://wallpaperplay.com/walls/full/d/2/f/58025.jpg);
+background-image:url(https://m.media-amazon.com/images/G/01/digital/music/merch/2020/LandingPages/AmazonMusicPrime/AM_Prime_LP_Desktop_1_1x.jpg);
 background-repeat : no-repeat;
 background-size : cover;
+height:100vh;
 }
 * {box-sizing: border-box}
 
@@ -78,6 +79,7 @@ input[type=submit] {
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
+  transition:ease-out 0.3s;
 }
 
 .topnav a:hover {
@@ -108,16 +110,22 @@ input[type=submit] {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  height:100px;
+  width:250px;
+  font-size:20px;
+  transition:ease-out 0.3s;
+
 }
 
 input[type=submit]:hover {
-  background-color: #45a049;
+  background-color: #45a020;
 }
 
-div {
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
+.upload{
+    background-color:transparent;
+    padding:200px 675px;
+    color:#FFF;
+    text-align:center;
 }
 </style>
 
@@ -134,10 +142,17 @@ div {
     </div>
 
 
-<div>
+<div class="upload">
   <form action="/chords_predict" method="POST">
-    <input type="Submit" value="Upload A Audio File">
+    <input type="Submit" value="Start Recording">
   </form>
+    <h3>NOTE</h3>
+    <ul>
+        <li>When you click on Start Recording Maya will continuously listen to all the sound from your device microphone</li>
+        <li>If the sound is too distorted then the results may not be accurate.</li>
+        <li>Play the chords of guitar after the starting tone played.</li>
+    </ul>
+
 </div>
     </body>
 </html>

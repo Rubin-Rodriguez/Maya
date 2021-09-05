@@ -22,12 +22,13 @@ def maya_mantra():
     try:
         filename = filedialog.askopenfilename(initialdir="/", title="Select a audio file", filetypes=(("wav files", "*.wav"), ("mp3 files", "*.mp3")))
     except RuntimeError:
-        print("RUN TIME ERROR!")
+        print("RUN TIME ERROR in filedialog mayamantra!")
         return "", ""
     try:
         y, sr = librosa.load(filename, duration=DURATION, sr=SR, mono=True)
     except FileNotFoundError:
         print("Please select a audio file!!!")
+
         return "", ""
     arr = list(y)
     arr.insert(0, filename)

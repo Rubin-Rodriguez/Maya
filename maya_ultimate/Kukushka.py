@@ -38,7 +38,6 @@ def play_time():
 
     #update time
     status_bar.after(1000, play_time)
-    root.mainloop()
 #add song function
 def add_song():
     song = filedialog.askopenfilename(initialdir='D:/Project Maya/Maya/maya_main/maya_music/', title="Choose A Song", filetypes=(("mp3 Files","*.mp3"),))
@@ -60,14 +59,19 @@ def add_many_songs():
 
 #play selected song
 def play():
-    song = song_box.get(ACTIVE)
-    song = f'D:/Project Maya/Maya/maya_main/maya_music/{song}.mp3'
+    try:
+        song = song_box.get(ACTIVE)
+        song = f'D:/Project Maya/Maya/maya_main/maya_music/{song}.mp3'
 
-    pygame.mixer.music.load(song)
-    pygame.mixer.music.play(loops=0)
+        pygame.mixer.music.load(song)
+        pygame.mixer.music.play(loops=0)
 
-    #call the play_time function to get time
-    play_time()
+        # call the play_time function to get time
+        play_time()
+        root.mainloop()
+
+    except RuntimeError:
+        print("Runtime Error in play() Kukushka")
 
 #stop playing song
 def stop():

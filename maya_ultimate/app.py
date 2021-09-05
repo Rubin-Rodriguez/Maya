@@ -117,7 +117,7 @@ def predchord():
 
         response, accuracy = strmel.strings_melody()
         if response == "":
-            return render_template('info.html')
+            return render_template('info2.html')
         else:
             return render_template('resultpred.html', prediction=response, prediction1=accuracy)
 
@@ -129,7 +129,17 @@ def assist():
         import maya_ultimate.Maya as maya
         message = maya.maya_assist()
         flash("Maya Assistant Terminated")
-        return render_template('home.html', response=message)
+        if message == "Strings_Melody":
+            return render_template("info2.html")
+        elif message == "Maya_Mantra":
+            return render_template("info.html")
+        elif message == "Logout":
+            session['logged_in'] = False
+            return render_template('login.html')
+        elif message == "Help":
+            return render_template("help.html")
+        else:
+            return render_template('home.html', response=message)
     else:
         return render_template('login.html')
 
@@ -140,9 +150,9 @@ def music():
         import maya_ultimate.Kukushka as kuku
         try:
             kuku.play()
+            return render_template('home.html')
         except RuntimeError:
-            print("Runtime Error!!")
-        return render_template('home.html')
+            print("Runtime Error in /music app!!")
     else:
         return render_template('login.html')
 

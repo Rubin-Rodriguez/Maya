@@ -31,10 +31,12 @@
   padding: 10px;
 }
 
-body {font-family: Arial, Helvetica, sans-serif;
-background-image:url(https://wallpaperplay.com/walls/full/d/2/f/58025.jpg);
-background-repeat : no-repeat;
-background-size : cover;
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	background-image:url(https://m.media-amazon.com/images/G/01/digital/music/merch/2020/LandingPages/AmazonMusicPrime/AM_Prime_LP_Desktop_1_1x.jpg);
+	background-repeat : no-repeat;
+	background-size : cover;
+	height:100vh
 }
 * {box-sizing: border-box}
 
@@ -112,10 +114,16 @@ input[type=submit]:hover {
   background-color: #45a049;
 }
 
-div {
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
+.result_head{
+	padding:20px;
+	background-color:orange;
+	font-size:40px;
+	font-weight:bold;
+}
+.result_body{
+ 	background-color:transparent;
+ 	font-size:30px;
+ 	color:#FFF;
 }
 </style>
 </head>
@@ -132,15 +140,15 @@ div {
 
     </div>
 
-	<div>
-	<center><h1>Results</h1></center>
+	<div class="result_head">
+	<center>Results</center>
 	</div>
-	<div>
+	<div class="result_body">
 	<center>
-		<h3> Algorithm Results</h3>
+		<br><br><br>
 		<p><b>Predicted Music : {{prediction}}</b></p>
-		
-		<p>KNN Algorithm Accuracy : {{prediction1}} </p>
+		<br>
+		<p>KNN Algorithm Accuracy : {{prediction1}}%</p>
 		
 		
 		</center>

@@ -58,13 +58,14 @@ def maya_assist():
             playsound(directory_path+'maya_recordings/voice.mp3')
 
         # Bye Maya
-        elif "bye Maya" in voice or "bye" in voice:
+        elif "bye Maya" in voice or "bye" in voice or "Logout" in voice:
             file = open(directory_path+"maya_drafts/exit.txt", "r").read().replace("\n", " ")
             speech = gTTS(text=str(file), lang=language, slow=False)
             speech.save(directory_path+"maya_recordings/voice.mp3")
             print('Maya:' + file)
             playsound(directory_path+'maya_recordings/voice.mp3')
             playsound(directory_path+'maya_recordings/logout.wav')
+            return "Logout"
 
         # heard nothing
         elif voice == "":
@@ -122,13 +123,33 @@ def maya_assist():
             playsound(directory_path + 'maya_recordings/voice.mp3')
             pygame.mixer.music.stop()
             return "Music Stoped!"
+        elif "Strings melody" in voice or "melody" in voice:
+            speech_text = "Opening Strings Melody."
+            speech = gTTS(text=speech_text, lang=language, slow=False)
+            speech.save(directory_path + "maya_recordings/voice.mp3")
+            print('Maya:' + speech_text)
+            playsound(directory_path + 'maya_recordings/voice.mp3')
+            return "Strings_Melody"
+        elif "Maya mantra" in voice or "Mantra" in voice:
+            speech_text = "Opening Maya Mantra."
+            speech = gTTS(text=speech_text, lang=language, slow=False)
+            speech.save(directory_path + "maya_recordings/voice.mp3")
+            print('Maya:' + speech_text)
+            playsound(directory_path + 'maya_recordings/voice.mp3')
+            return "Maya_Mantra"
+        elif "I need help" in voice:
+            speech_text = "Okay, don't worry! I'm always there for you. You can find help in help section."
+            speech = gTTS(text=speech_text, lang=language, slow=False)
+            speech.save(directory_path + "maya_recordings/voice.mp3")
+            print('Maya:' + speech_text)
+            playsound(directory_path + 'maya_recordings/voice.mp3')
+            return "Help"
         else:
             file = open(directory_path+"maya_drafts/development.txt", "r").read().replace("\n", " ")
             speech = gTTS(text=str(file), lang=language, slow=False)
             speech.save(directory_path+"maya_recordings/voice.mp3")
             print('Maya:' + file)
             playsound(directory_path+'maya_recordings/voice.mp3')
-
 
     except s_r.RequestError:
         print("\n\n\nNETWORK CONNECTION UNAVALILABLE!\n\n")
