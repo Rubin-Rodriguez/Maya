@@ -101,9 +101,10 @@ def maya_mantra():
         return sortedVotes[0][0]
 
     def getAccuracy(testSet, predictions):
+        predictions = predictions[0]
         correct = 0
         for x in range(len(testSet)):
-            if testSet[x][-1] == predictions[x]:
+            if testSet[x] == predictions:
                 correct += 1
 
         return (correct / float(len(testSet))) * 100.0
@@ -148,10 +149,19 @@ def maya_mantra():
         print('\n\nResponse:', response)
 
         predictions.append(response)
+        print('predictions', predictions)
 
-    accuracy = getAccuracy(testSet, predictions)
-    accuracy = random.randint(65, 85)
+    testset1 = pd.read_csv('response_dataset.csv')
+
+    testset1 = testset1.iloc[:, 0]
+
+    accuracy = getAccuracy(testset1, predictions)
+    #accuracy = random.randint(65, 85)
     print('Accuracy: ' + repr(accuracy) + '%\n\n')
+
+    file = open('response_dataset.csv', 'a', newline='')
+    writer3 = csv.writer(file)
+    writer3.writerow([response])
 
     response = response.replace("_", " ")
     import matplotlib.pyplot as plt
