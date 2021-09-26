@@ -151,7 +151,7 @@ def maya_mantra():
         predictions.append(response)
         print('predictions', predictions)
 
-    testset1 = pd.read_csv('response_dataset.csv')
+    testset1 = pd.read_csv('scale_response_dataset.csv')
 
     testset1 = testset1.iloc[:, 0]
 
@@ -159,7 +159,7 @@ def maya_mantra():
     #accuracy = random.randint(65, 85)
     print('Accuracy: ' + repr(accuracy) + '%\n\n')
 
-    file = open('response_dataset.csv', 'a', newline='')
+    file = open('scale_response_dataset.csv', 'a', newline='')
     writer3 = csv.writer(file)
     writer3.writerow([response])
 
