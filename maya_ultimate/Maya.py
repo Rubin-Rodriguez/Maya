@@ -31,7 +31,7 @@ def maya_assist(user_name):
             voice = (r.recognize_google(audio))  # to print voice into text
         except s_r.UnknownValueError:
             voice = ""
-        print('Rubin:' + voice)
+        print(user_name + ':' + voice)
 
         # Hey Maya
         if "hey Maiya" in voice or "hi" in voice or "hello maya" in voice:
