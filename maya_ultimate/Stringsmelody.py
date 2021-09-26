@@ -19,7 +19,7 @@ def strings_melody():
     DURATION = 4
 
     # Root Directory for audio clips and drafts
-    directory_path = 'D:/Project Maya/Maya/maya_main/'
+    #directory_path = 'D:/Project Maya/Maya/maya_main/'
 
     # Sampling frequency
     freq = 44100
@@ -28,7 +28,7 @@ def strings_melody():
     duration = 4
 
     try:
-        playsound(directory_path + 'maya_recordings/listen.wav')
+        playsound('maya_recordings/listen.wav')
         print("Listening!!!")
 
         # Start recorder with the given values
@@ -40,11 +40,11 @@ def strings_melody():
 
         # This will convert the NumPy array to an audio
         # file with the given sampling frequency
-        write(directory_path + "recordings/recording0.wav", freq, recording)
+        write("recordings/recording0.wav", freq, recording)
 
         # Convert the NumPy array to audio file
-        wv.write(directory_path + "recordings/recording1.wav", recording, freq, sampwidth=2)
-        filename = directory_path + "recordings/recording1.wav"
+        wv.write("recordings/recording1.wav", recording, freq, sampwidth=2)
+        filename = "recordings/recording1.wav"
 
         # filename = filedialog.askopenfilename(initialdir="/", title="Select a audio file", filetypes=(("wav files", "*.wav"), ("mp3 files", "*.mp3")))
     except RuntimeError:

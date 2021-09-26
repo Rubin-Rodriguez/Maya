@@ -10,7 +10,7 @@ from mutagen.mp3 import MP3
 
 root = Tk()
 root.title('Kukushka Ver 1.0')
-root.iconbitmap('D:/Project Maya/Maya/maya_ultimate/icons/kuku.ico')
+root.iconbitmap('icons/kuku.ico')
 root.geometry("400x350")
 #initialize Pygame Mixer
 pygame.mixer.init()
@@ -24,7 +24,7 @@ def play_time():
     #get currently playing song
     #next_one = song_box.curselection()
     song = song_box.get(ACTIVE)
-    song = f'D:/Project Maya/Maya/maya_main/maya_music/{song}.mp3'
+    song = f'maya_music/{song}.mp3'
 
     #get song length with mutagen
     song_mut = MP3(song)
@@ -40,19 +40,19 @@ def play_time():
     status_bar.after(1000, play_time)
 #add song function
 def add_song():
-    song = filedialog.askopenfilename(initialdir='D:/Project Maya/Maya/maya_main/maya_music/', title="Choose A Song", filetypes=(("mp3 Files","*.mp3"),))
-    song = song.replace("D:/Project Maya/Maya/maya_main/maya_music/", "")
+    song = filedialog.askopenfilename(initialdir='maya_music/', title="Choose A Song", filetypes=(("mp3 Files","*.mp3"),))
+    song = song.replace("maya_music/", "")
     song = song.replace(".mp3", "")
     #insert into playlist
     song_box.insert(END, song)
 
 #add many songs to playlist
 def add_many_songs():
-    songs = filedialog.askopenfilenames(initialdir='D:/Project Maya/Maya/maya_main/maya_music/', title="Choose A Song",
+    songs = filedialog.askopenfilenames(initialdir='maya_music/', title="Choose A Song",
                                       filetypes=(("mp3 Files", "*.mp3"),))
     #loop thru song list replace directory
     for song in songs:
-        song = song.replace("D:/Project Maya/Maya/maya_main/maya_music/", "")
+        song = song.replace("maya_music/", "")
         song = song.replace(".mp3", "")
         # insert into playlist
         song_box.insert(END, song)
@@ -61,7 +61,7 @@ def add_many_songs():
 def play():
     try:
         song = song_box.get(ACTIVE)
-        song = f'D:/Project Maya/Maya/maya_main/maya_music/{song}.mp3'
+        song = f'maya_music/{song}.mp3'
 
         pygame.mixer.music.load(song)
         pygame.mixer.music.play(loops=0)
@@ -95,7 +95,7 @@ def next_song():
             next_one = next_one - size
         #grab song title from playlist
         song = song_box.get(next_one)
-        song = f'D:/Project Maya/Maya/maya_main/maya_music/{song}.mp3'
+        song = f'maya_music/{song}.mp3'
 
         pygame.mixer.music.load(song)
         pygame.mixer.music.play(loops=0)
@@ -123,7 +123,7 @@ def previous_song():
             next_one = next_one + size
 
         song = song_box.get(next_one)
-        song = f'D:/Project Maya/Maya/maya_main/maya_music/{song}.mp3'
+        song = f'maya_music/{song}.mp3'
 
         pygame.mixer.music.load(song)
         pygame.mixer.music.play(loops=0)
@@ -171,11 +171,11 @@ song_box = Listbox(root, bg="black", fg="green", width=60, selectbackground="gra
 song_box.pack(pady=20)
 
 #define player control button images
-back_btn_img = PhotoImage(file='D:/Project Maya/Maya/maya_ultimate/icons/back50.png')
-play_btn_img = PhotoImage(file='D:/Project Maya/Maya/maya_ultimate/icons/play50.png')
-pause_btn_img = PhotoImage(file='D:/Project Maya/Maya/maya_ultimate/icons/pause50.png')
-stop_btn_img = PhotoImage(file='D:/Project Maya/Maya/maya_ultimate/icons/stop50.png')
-forward_btn_img = PhotoImage(file='D:/Project Maya/Maya/maya_ultimate/icons/forward50.png')
+back_btn_img = PhotoImage(file='icons/back50.png')
+play_btn_img = PhotoImage(file='icons/play50.png')
+pause_btn_img = PhotoImage(file='icons/pause50.png')
+stop_btn_img = PhotoImage(file='icons/stop50.png')
+forward_btn_img = PhotoImage(file='icons/forward50.png')
 
 #create player control frame
 controls_frame = Frame(root)
@@ -215,7 +215,7 @@ remove_song_menu.add_command(label="Delete All Songs From Playlist", command=del
 status_bar = Label(root, text='', bd=1, relief=GROOVE, anchor=E)
 status_bar.pack(fill=X, side=BOTTOM, ipady=2)
 
-songs = os.listdir('D:/Project Maya/Maya/maya_main/maya_music/')
+songs = os.listdir('maya_music/')
 for song in tqdm(songs, ncols=100, desc="Loading Songs"):
     song = song.replace(".mp3", "")
     # insert into playlist

@@ -1,3 +1,4 @@
+import fileinput
 from flask import Flask, render_template, request, session, flash
 import sqlite3 as sql
 import os
@@ -13,9 +14,8 @@ import random
 import pandas as pd
 import random
 from pylab import *
-
 app = Flask(__name__)
-
+usrname = " "
 @app.route('/')
 def home():
     session['logged_in'] = False
@@ -54,6 +54,7 @@ def user_login():
 
 @app.route('/logindetails',methods = ['POST', 'GET'])
 def logindetails():
+    global usrname
     if request.method == 'POST':
         import maya_ultimate.Login as login
         usrname = request.form['username']
@@ -127,7 +128,7 @@ def assist():
 
     if session['logged_in']:
         import maya_ultimate.Maya as maya
-        message = maya.maya_assist()
+        message = maya.maya_assist(usrname)
         flash("Maya Assistant Terminated")
         if message == "Strings_Melody":
             return render_template("info2.html")
